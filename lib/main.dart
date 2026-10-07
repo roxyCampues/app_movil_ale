@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-// import 'lista_productos.dart'; // Importación de la pantalla de catálogo
+import 'lista_productos.dart'; // Importación de la pantalla de catálogo
 
 void main() {
   runApp(const EmexsisApp());
@@ -37,7 +37,7 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
   // Solo 2 pantallas: Inicio y Catálogo
   final List<Widget> _screens = const [
     HomeContent(),
-   // ProductListPage(), // Pestaña de Catálogo
+   ProductListPage(), // Pestaña de Catálogo
   ];
 
   @override
