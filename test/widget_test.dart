@@ -4,13 +4,17 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:app_movil_ale/main.dart';
 
 void main() {
-  testWidgets('filters services and adds one to the consultation list', (
+  testWidgets('navigates between home and products and filters services', (
     WidgetTester tester,
   ) async {
     await tester.pumpWidget(const MyApp());
 
+    expect(find.text('Tecnología a tu alcance'), findsOneWidget);
+
+    await tester.tap(find.text('Productos'));
+    await tester.pumpAndSettle();
+
     expect(find.text('Listado de productos'), findsOneWidget);
-    expect(find.text('EMEXSIS'), findsOneWidget);
     expect(find.text('Mantenimiento de celulares'), findsOneWidget);
 
     await tester.tap(find.widgetWithText(ChoiceChip, 'Cursos online'));
@@ -28,5 +32,16 @@ void main() {
       find.text('Curso online de computación agregado a tu lista de consultas'),
       findsOneWidget,
     );
+
+    await tester.tap(find.text('Inicio'));
+    await tester.pumpAndSettle();
+
+    expect(find.text('Tecnología a tu alcance'), findsOneWidget);
+
+    await tester.tap(find.text('Ver servicios y cursos'));
+    await tester.pumpAndSettle();
+
+    expect(find.text('Listado de productos'), findsOneWidget);
+    expect(find.text('Curso online de computación'), findsOneWidget);
   });
 }
